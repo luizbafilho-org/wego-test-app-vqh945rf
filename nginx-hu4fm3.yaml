@@ -1,0 +1,29 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: my-nginx-hu4fm3
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-hu4fm3
+  namespace: my-nginx-hu4fm3
+  labels:
+    name: nginx-hu4fm3
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: nginx-hu4fm3
+  template:
+    metadata:
+      namespace: my-nginx-hu4fm3
+      labels:
+        name: nginx-hu4fm3
+    spec:
+      containers:
+      - name: nginx-hu4fm3
+        image: nginx
+        ports:
+        - containerPort: 80
+
